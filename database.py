@@ -47,4 +47,4 @@ with con:
 	rows=cur.fetchall()
 	cols = [desc[0] for desc in cur.description]
 	df = pd.DataFrame(rows, columns=cols)
-	print(df)
+	print('The cities warmest in July are %s' % ', '.join(df['cityname']))
