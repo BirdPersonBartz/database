@@ -43,7 +43,7 @@ with con:
 		.format(tn=weather_table, fn1=city_colw, ft1=text_type, fn2=year_col,ft2=integer_type,fn3=w_month,fn4=c_month,fn5=avg_high))
 	cur.executemany(citiesstmt, citiesinput)
 	cur.executemany(weatherstmt, weatherinput)
-	cur.execute("SELECT city, warm_month FROM cities INNER JOIN weather GROUP BY city;")
+	cur.execute("SELECT cityname, state, warm_month FROM weather INNER JOIN cities ON (city=cityname) WHERE warm_month ='July';")
 	rows=cur.fetchall()
 	cols = [desc[0] for desc in cur.description]
 	df = pd.DataFrame(rows, columns=cols)
